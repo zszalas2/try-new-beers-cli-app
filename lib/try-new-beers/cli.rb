@@ -22,15 +22,16 @@ class TryNewBeers::CLI
       input = gets.strip.downcase
       case input 
       when "1"
-        "Great choice! Here's some more info"
+        puts "Great choice! Here's some more info"
       when "2"
-        "Great choice! Here's some more info"
+        puts "Great choice! Here's some more info"
       when "3"
-        "Great choice! Here's some more info"
+        puts "Great choice! Here's some more info"
       when "list"
-        "list_beers"
+        puts "list_beers"
       else 
         puts "Not sure what you're asking for."
       end
     end
+  end
 end
