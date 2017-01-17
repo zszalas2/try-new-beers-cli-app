@@ -1,5 +1,2 @@
-  require "try-new-beers/version"
-
-  module TryNewBeers
-    #code goes here
-  end
+  require_relative "try-new-beers/version"
+  require_relative "./try-new-beers/cli"
