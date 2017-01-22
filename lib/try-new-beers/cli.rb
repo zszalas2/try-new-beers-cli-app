@@ -4,8 +4,12 @@ class TryNewBeers::CLI
 
 
   def call
-    puts "Here are the 25 latest beer reviews:"
     list_reviews
+    menu
+  end
+
+  def list_reviews
+    puts "Here are the 25 latest beer reviews:"
     puts <<-DOC
     1. Doghead - IPA - Avg Review:4.25
     2. FunnyBone - Lager - Avg Review: 3.75
@@ -13,9 +17,6 @@ class TryNewBeers::CLI
     DOC
   end
 
-  def list_reviews
-  end
-  
 
   def menu
     input = nil
@@ -31,6 +32,8 @@ class TryNewBeers::CLI
         puts "Great choice! Here's some more info"
       when "list"
         puts "list_beers"
+      when "exit"
+        exit
       else 
         puts "Not sure what you're asking for."
       end
