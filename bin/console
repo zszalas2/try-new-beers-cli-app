@@ -15,7 +15,7 @@ def reload!
 end
 
 gem 'rake'
-gem 'pry'
+require 'pry'
 gem 'require_all'
 require "irb"
-pry.start
+IRB.start

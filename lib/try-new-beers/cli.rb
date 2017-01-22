@@ -1,19 +1,21 @@
 require 'pry'
 class TryNewBeers::CLI
 
-  def call
-    TryNewBeers::Scraper.new
-    pry.binding
-  end
 
-  def list_beers
+
+  def call
     puts "Here are the 25 latest beer reviews:"
+    list_reviews
     puts <<-DOC
     1. Doghead - IPA - Avg Review:4.25
     2. FunnyBone - Lager - Avg Review: 3.75
     3. XYZ - Pale Ale - Avg Review: 4.15
     DOC
   end
+
+  def list_reviews
+  end
+  
 
   def menu
     input = nil

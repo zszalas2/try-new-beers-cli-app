@@ -2,4 +2,4 @@
 
 require './lib/try-new-beers' 
 
-TryNewBeers::CLI.new.call #execution point.
+TryNewBeers::CLI.new.call #execution point. Everything goes into this object
