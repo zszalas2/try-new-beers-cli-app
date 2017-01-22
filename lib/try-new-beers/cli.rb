@@ -1,9 +1,9 @@
+require 'pry'
 class TryNewBeers::CLI
 
   def call
-    list_beers
-    menu
-    goodbye
+    TryNewBeers::Scraper.new
+    pry.binding
   end
 
   def list_beers

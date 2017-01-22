@@ -1,11 +1,15 @@
-class TryNewBeers::CLI
+class TryNewBeers::Scraper
+
+  def get_page
+    Nokogiri::HTML(open("https://www.beeradvocate.com/beer/"))
+  end
 
   def scrape_page
   end
 
   def make_reviews
   end
-  
+
 end
 
 #Scraper object
