@@ -24,7 +24,8 @@ class TryNewBeers::CLI
       input = gets.strip.downcase
 
       if input.to_i > 0
-        puts @beer_review[input.to_i-1]
+        review = @beer_review[input.to_i-1]
+        puts "#{review.name} - #{review.brewery} - #{review.type} - #{review.rating}"
       elsif input == "list"
         list_reviews
       else 
