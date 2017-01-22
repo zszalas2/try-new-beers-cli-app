@@ -7,7 +7,7 @@ class TryNewBeers::CLI
   end
 
   def list_beers
-    puts "Here are the 25 latest reviewed beers:"
+    puts "Here are the 25 latest beer reviews:"
     puts <<-DOC
     1. Doghead - IPA - Avg Review:4.25
     2. FunnyBone - Lager - Avg Review: 3.75

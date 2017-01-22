@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require './lib/try-new-beers'
+require './lib/try-new-beers' 
 
-TryNewBeers::CLI.new.call
+TryNewBeers::CLI.new.call #execution point.
