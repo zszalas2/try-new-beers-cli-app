@@ -6,20 +6,12 @@
 
 
 
-What is a beer?
+What is a beer_review?
 1. Name of Beer
 2. Brewing Co.
 3. Type of beer
 4. Avg Rating
-5. Beer profile
+5. Beer profile URL
 
 https://www.beeradvocate.com/beer/
 
-SPACES
-
-Craig limoli
-
-7 people - couple FT in NYC
-Philly / Jersey - couple
-4 people who would want to have office space under group plan- The Farm in SoHo-
-WellSheet- craig.limoli@wellsheet.com

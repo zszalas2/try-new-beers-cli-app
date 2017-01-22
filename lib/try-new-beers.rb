@@ -5,6 +5,7 @@ require 'pry'
 require 'nokogiri'
 
 require_relative "./try-new-beers/cli"
+require_relative "./try-new-beers/beer_review"
 
 
   #environment - could have also put it under config -> environement

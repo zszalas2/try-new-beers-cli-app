@@ -10,11 +10,7 @@ class TryNewBeers::CLI
 
   def list_reviews
     puts "Here are the 25 latest beer reviews:"
-    puts <<-DOC
-    1. Doghead - IPA - Avg Review:4.25
-    2. FunnyBone - Lager - Avg Review: 3.75
-    3. XYZ - Pale Ale - Avg Review: 4.15
-    DOC
+    @beer_review = TryNewBeers::BeerReview.recent
   end
 
 
@@ -31,7 +27,7 @@ class TryNewBeers::CLI
       when "3"
         puts "Great choice! Here's some more info"
       when "list"
-        puts "list_beers"
+        list_reviews
       when "exit"
         exit
       else 
