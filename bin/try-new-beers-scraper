@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
-require './lib/try-new-beers' 
+require "bundler/setup"
+require "./lib/try-new-beers"
 
 TryNewBeers::CLI.new.call #execution point. Everything goes into this object

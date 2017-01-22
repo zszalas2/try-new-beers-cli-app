@@ -11,6 +11,9 @@ class TryNewBeers::CLI
   def list_reviews
     puts "Here are the 25 latest beer reviews:"
     @beer_review = TryNewBeers::BeerReview.recent
+    @beer_review.each.with_index(1) do |r, i|
+      puts "#{i}. #{r.name} - #{r.brewery} - #{r.type} - #{r.rating}"
+    end
   end
 
 
@@ -19,17 +22,11 @@ class TryNewBeers::CLI
     while input != "exit"
       puts "Enter the number of the beer you'd like to learn more about"
       input = gets.strip.downcase
-      case input 
-      when "1"
-        puts "Great choice! Here's some more info"
-      when "2"
-        puts "Great choice! Here's some more info"
-      when "3"
-        puts "Great choice! Here's some more info"
-      when "list"
+
+      if input.to_i > 0
+        puts @beer_review[input.to_i-1]
+      elsif input == "list"
         list_reviews
-      when "exit"
-        exit
       else 
         puts "Not sure what you're asking for."
       end
