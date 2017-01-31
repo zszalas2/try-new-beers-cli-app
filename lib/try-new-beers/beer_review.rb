@@ -1,6 +1,7 @@
 class TryNewBeers::BeerReview
   attr_accessor :name, :brewery, :type, :rating, :profile
 
+
   @@all = []
 
   def initialize (name=nil, brewery=nil, stype=nil, rating=nil)
@@ -27,7 +28,7 @@ class TryNewBeers::BeerReview
 
   def self.type
     #extract type and brewery
-    @type ||= @doc.search("div#extendedInfo a").children.select.each_with_index { |children, i| i.even? }.collect {|e| e.text}
+    @type ||= @doc.search("div#extendedInfo a").children.select.each_with_index { |children, i| i.odd? }.collect {|e| e.text}
   end
 
   def self.brewery
@@ -38,6 +39,7 @@ class TryNewBeers::BeerReview
     
 
   def self.rating
+    @rating ||= @doc.search("td[align='left'][valign='top'].hr_bottom_light b").collect {|e| e.text}
   end
 
   def self.profile
@@ -49,6 +51,7 @@ class TryNewBeers::BeerReview
     @doc = Nokogiri::HTML(open("https://www.beeradvocate.com/lists/top/"))
     #name = doc.search("tr a b").each do |n| puts n.text end
     #type_and_brewing_company = @doc.search("div#extendedInfo").children.each do |row| puts row.children.first end
+    binding.pry
   end
 
   def self.scrape_all
