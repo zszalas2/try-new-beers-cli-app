@@ -43,7 +43,8 @@ class TryNewBeers::BeerReview
   end
 
   def self.profile
-    
+    #I need this code to return the url extension and then attache the extension on the end of every url (last part can be done under scrape_all )
+    @doc.search("tr td a").collect {|link| link.attribute('href').value}
   end
 
 
