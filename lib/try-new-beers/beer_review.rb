@@ -1,28 +1,59 @@
 class TryNewBeers::BeerReview
   attr_accessor :name, :brewery, :type, :rating, :profile
 
-  def self.recent
-    #should return 25 instances of the  most recent beer_reviews
-    #scrape https://www.beeradvocate.com/beer/ and return all recent instances of reviews 
-    self.scrape_reviews
-  def self.scrape_reviews
+  @@all = []
+
+  def initialize (name=nil, brewery=nil, stype=nil, rating=nil)
+    @name = name
+    @brewery = brewery
+    @type = type
+    @rating = rating
+    @proile = proile
+    @@all << self
   end
 
-    beer_review_1 = self.new
-    beer_review_1.name = "Doghead"
-    beer_review_1.brewery = "Doghead Brewery"
-    beer_review_1.type = "IPA"
-    beer_review_1.rating = "Avg Rating:4.25"
-    beer_review_1.profile = "www.beer.com"
-
-    beer_review_2 = self.new
-    beer_review_2.name = "Funnybone"
-    beer_review_2.brewery = "Dingleberry Brewery"
-    beer_review_2.type = "Lager"
-    beer_review_2.rating = "Avg Rating:3.75"
-    beer_review_2.profile = "www.beer.com"
-
-    [beer_review_1, beer_review_2]
+  def self.all
+    @@all
   end
 
+  def self.find_by_index
+    #search function to find elements based on index
+  end
+
+  def self.name
+    #extract name
+    @name ||= @doc.search("tr a b").collect {|e| e.text}
+  end
+
+  def self.type
+    #extract type and brewery
+    @type ||= @doc.search("div#extendedInfo a").children.select.each_with_index { |children, i| i.even? }.collect {|e| e.text}
+  end
+
+  def self.brewery
+    #I need this to return to me an array with the strings of all the breweries. Because the span for type and brewery are both children of the same,
+    #I have to use even? or odd? on the arra
+    @brewery ||= @doc.search("div#extendedInfo a").children.select.each_with_index { |children, i| i.even? }.collect {|e| e.text}
+  end
+    
+
+  def self.rating
+  end
+
+  def self.profile
+    
+  end
+
+
+  def self.get_page
+    @doc = Nokogiri::HTML(open("https://www.beeradvocate.com/lists/top/"))
+    #name = doc.search("tr a b").each do |n| puts n.text end
+    #type_and_brewing_company = @doc.search("div#extendedInfo").children.each do |row| puts row.children.first end
+  end
+
+  def self.scrape_all
+    #scrape each row and put into an array.
+  #scrape a row instead of scraping a column- scrape row, extract name, type, brewery, and push into on array.
+  end
 end
+

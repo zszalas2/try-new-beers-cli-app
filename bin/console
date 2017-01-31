@@ -13,7 +13,7 @@ require "./lib/try-new-beers"
 # Pry.start
 
 def reload!
-  load_all './lib'
+  load './lib/try-new-beers/beer_review.rb'
 end
 
 gem 'rake'
