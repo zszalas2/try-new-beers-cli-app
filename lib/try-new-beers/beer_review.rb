@@ -56,8 +56,9 @@ class TryNewBeers::BeerReview
   end
 
   def self.scrape_all
-    #scrape each row and put into an array.
-  #scrape a row instead of scraping a column- scrape row, extract name, type, brewery, and push into on array.
+    name.zip(type, brewery, rating, profile)
+    #the above method maps corresponding elements together fromt he different arrays.
+    
   end
 end
 
