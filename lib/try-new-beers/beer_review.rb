@@ -1,22 +1,22 @@
 class BeerReview
-  attr_accessor :name, :brewery, :type, :rating, :profile :doc
+  attr_accessor :name, :brewery, :type, :rating, :profile, :doc
 
 
   @@all = []
 
-  def initialize (name=nil, brewery=nil, type=nil, rating=nil, profile=nil)
-    @name = name
-    @brewery = brewery
-    @type = type
-    @rating = rating
-    @profile = profile
-  end
+  #def initialize (name=nil, brewery=nil, type=nil, rating=nil, profile=nil)
+    #@name = name
+    #@brewery = brewery
+    #@type = type
+    #@rating = rating
+    #@profile = profile
+  #end
 
   def self.all
     @@all
   end
 
-  def self.save
+  def save
     @@all << self
   end
 
@@ -58,20 +58,24 @@ class BeerReview
   end
 
   def self.scrape_all
-    BeerReview.new
-    names.zip(types, breweries, ratings, profiles).each do |i|
-      name = [i][0]
-      type = [i][1]
-      brewery = [i][2]
-      ratings = [i][3]
-      profile = [i][4]
-    end
-    BeerReview.save
-    binding.pry
-    #the above method maps corresponding elements together fromt he different arrays.
+    self.get_page
+    beer_review_array = names.zip(types, breweries, ratings, profiles)
+     
+    (0..beer_review_array.size).to_a.each do |i|
+      name = names[i]
+      type = types[i]
+      brewery = breweries[i]
+      rating = ratings[i]
+      profile = profiles[i]
     
-
-
+      beer_review = BeerReview.new
+      beer_review.name = name
+      beer_review.type =  type
+      beer_review.brewery = brewery
+      beer_review.rating = rating
+      beer_review.profile = profile
+      beer_review.save
+    end
   end
 end
 
