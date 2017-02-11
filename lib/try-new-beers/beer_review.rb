@@ -20,8 +20,20 @@ class BeerReview
     @@all << self
   end
 
-  def self.find_by_index
+  def self.find_by_type(input)
     #search function to find elements based on index
+    #user inputs a number
+    self.all.select do |type| 
+      input == beer_review.type
+    end
+  end
+
+  def self.find_by_brewery(brew)
+    #this search function would allow people to search based on their favorite brewery
+    #this would require a user input 
+    #self.all.find_all do |b|
+      #b.brewery.downcase.strip == brewery.downcase.strip ||
+      #b.brewery.split("(").first.strip.downcase == brewery.downcase.strip
   end
 
   def self.names
@@ -58,22 +70,15 @@ class BeerReview
   end
 
   def self.scrape_all
-    self.get_page
     beer_review_array = names.zip(types, breweries, ratings, profiles)
-     
-    (0..beer_review_array.size).to_a.each do |i|
-      name = names[i]
-      type = types[i]
-      brewery = breweries[i]
-      rating = ratings[i]
-      profile = profiles[i]
     
+    (0..beer_review_array.size).to_a.each_with_index do |i| #0..bra.size returns 250. Convert to an array, returning an array of integers from 0 - 250. Each_index will iterate over every single integer. Using i as a variable for every integer
       beer_review = BeerReview.new
-      beer_review.name = name
-      beer_review.type =  type
-      beer_review.brewery = brewery
-      beer_review.rating = rating
-      beer_review.profile = profile
+      beer_review.name = beer_review_array[i][0]
+      beer_review.type = beer_review_array[i][1]
+      beer_review.brewery = beer_review_array[i][2]
+      beer_review.rating = beer_review_array[i][3]
+      beer_review.profile = beer_review_array[i][4]
       beer_review.save
     end
   end
