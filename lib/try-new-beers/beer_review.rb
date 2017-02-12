@@ -68,7 +68,6 @@ class BeerReview
       beer_review.profile = beer_review_array[i][4]
       beer_review.save
     end
-    binding.pry
   end
 end
 
