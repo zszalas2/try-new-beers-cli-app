@@ -1,19 +1,48 @@
 require 'pry'
 class TryNewBeers::CLI
 
+  #Greet the user - show picture for cheer (beer mug)...loading .....
+  #Retrieve reviews
+  #Instruct on browsing or searching- it should list all the beers from 1 - 250 
+  # give the option to search by type
+  # take input and return beer types
+  #
 
-
-  def call
+   def call
     list_reviews
     menu
   end
 
-  def list_reviews
-    puts "Here are the 25 latest beer reviews:"
-    @beer_review = TryNewBeers::BeerReview.recent
-    @beer_review.each.with_index(1) do |r, i|
-      puts "#{i}. #{r.name} - #{r.brewery} - #{r.type} - #{r.rating}"
+  puts
+
+  "**********************
+  **********************
+  **********************
+  **********************
+  ********************************
+  ********************************
+  **********************       ***
+  *******CHEERS*********       ***
+  **********************       ***
+  **********************       ***
+  **********************       ***
+  **********************       ***
+  ********************************
+  ********************************
+  **********************
+  **********************
+  **********************
+
+
+  .....loading....."
+
+
+  def list
+    puts ""
+    BeerReview.all.each.with_index(1) do |b, i|
+      puts "#{i}. #{b.name}, #{b.type}, #{b.brewery}, #{b.rating}, https://www.beeradvocate.com#{b.profile}"
     end
+    puts""
   end
 
 
