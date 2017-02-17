@@ -43,6 +43,7 @@ class TryNewBeers::CLI
 
     BeerReview.scrape_all 
     list
+    puts "Loading Menu ................................. " 
     menu
   end
 
@@ -54,12 +55,12 @@ class TryNewBeers::CLI
     end
   end
 
-  def see_more(input)
+  #def see_more(input)
     #this method should allow user to navigate to the profile of the beer of their choice based on index, 
     #take input
     #convert index to integer 
     #take that index' profile and navigate to www.beeradvocate.com/#{profile}/// openuri??
-  end
+  #end
 
 
 
@@ -71,15 +72,16 @@ class TryNewBeers::CLI
     input = gets.strip.to_i
 
     beer = BeerReview.find_by_index(input.to_i-1)
+    
+    `open #{"https://www.beeradvocate.com#{beer.profile}"}`
 
-      Open("https://www.beeradvocate.com#{b[input].profile}")
-    while input != "exit"
-        see_more
-      elsif input == "list"
-        list
-      else 
-        puts "Not sure what you're asking for."
-      end
-    end
+    #while input != "exit"
+     #   see_more
+      #elsif input == "list"
+       # list
+      #else 
+       # puts "Not sure what you're asking for."
+     # end
+    #end
   end
 end
