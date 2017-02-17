@@ -8,21 +8,15 @@ class TryNewBeers::CLI
   #Retrieve reviews
   #Instruct on browsing or searching- it should list all the beers from 1 - 250 
   # give the option to search by type
-  # take input and return beer types
-  #
-
-   def call
-    BeerReview.scrape_all #prime
-    list
-    menu
-  end
+  # take input and return beer type
 
 
-  def starts
+  def call
 
-  
-    puts
-    "**********************
+        puts""
+
+    puts "
+    **********************
     **********************
     **********************
     **********************
@@ -40,45 +34,49 @@ class TryNewBeers::CLI
     **********************
     **********************
 
+    Welcome to Cheers: Try New Beers
 
-    .....loading.....
 
-    Welcome to Cheers: Try New Beers"
+
+    .....loading....."
+    puts ""
+
+    BeerReview.scrape_all 
+    list
+    menu
   end
 
 
   def list
-    puts "Here are the top 250 beers!"
-    puts ""
+    puts "Here are 250 beers you can try!"
     BeerReview.all.each.with_index(1) do |b, i|
       puts "#{i}. #{b.name}, #{b.type}, #{b.brewery}, #{b.rating}, https://www.beeradvocate.com#{b.profile}"
     end
-    puts""
   end
 
-  def see_more
+  def see_more(input)
     #this method should allow user to navigate to the profile of the beer of their choice based on index, 
     #take input
     #convert index to integer 
-    #take that index' profile and navigate to www.beeradvocate.com/#{profile}
+    #take that index' profile and navigate to www.beeradvocate.com/#{profile}/// openuri??
   end
 
 
 
   def menu
-    #menu should have two options: search by type or see more of a particular beer
+    #menu should have two options: search by type or see more of a particular beer OR list again
     #is someone picks searc- they are able to input the type of beer they like and that will return all beers that match that value
     #
-    input = nil
-    while input != "exit"
-      puts "Enter the number of the beer you'd like to learn more about"
-      input = gets.strip.downcase
+    puts "Oh hi...I didn't see you come in. What number of beer would you like to explore?"
+    input = gets.strip.to_i
 
-      if input.to_i > 0
-        review = @beer_review[input.to_i-1]
-        puts "#{review.name} - #{review.brewery} - #{review.type} - #{review.rating}"
+    beer = BeerReview.find_by_index(input.to_i-1)
+
+      Open("https://www.beeradvocate.com#{b[input].profile}")
+    while input != "exit"
+        see_more
       elsif input == "list"
-        list_reviews
+        list
       else 
         puts "Not sure what you're asking for."
       end

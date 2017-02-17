@@ -22,6 +22,10 @@ class BeerReview
     end
   end
 
+  def self.find_by_index(index)
+    self.all[index-1]
+  end
+
   def self.names
     #extract name
     @names ||= @doc.search("tr a b").collect {|e| e.text}
