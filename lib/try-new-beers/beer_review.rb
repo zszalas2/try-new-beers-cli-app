@@ -13,14 +13,17 @@ class BeerReview
     @@all << self
   end
 
-  def self.find_by_type(type)
-    #search function to find elements based on index
-    #user inputs a number
-    self.all.detect do |b|
-      b.type.downcase.strip == type.downcase.strip ||
-      b.type.split("(").first.strip.downcase == type.downcase.strip
-    end
-  end
+  #def self.find_by_type(type)
+    #create an array match_beers, this will serve as a bucket for matches
+    #Each method - iterate over every element to see if inout is included
+    #compare type by using substring. if type.substring == input.substring 
+    #if comparison is true/ -1 < input/ then save into bucket
+    #return the matches in with index form and allow to explore further by open
+    #self.all.detect do |t|
+      #t.type.include?(type)
+      #binding.pry
+    #end
+  #end
 
   def self.find_by_index(index)
     self.all[index-1]
